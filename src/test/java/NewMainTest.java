@@ -28,6 +28,7 @@ public class NewMainTest {
         wait.until(ExpectedConditions.presenceOfElementLocated(search)).sendKeys("Killerbees");
         wait.until(d -> d.findElement(search)).sendKeys(Keys.ENTER);
 
+        //поиск текста на странице
         assert "Killerbees".equals(getTextFromElement(driver, result));
         driver.findElement(By.xpath("//*[@id=\"mw-content-text\"]/div[4]/div[3]/div/ul/li[1]/div[1]/a/span")).click();
         assert "Killerbee 106.3".equals(getTextFromElement(driver, subresult));
