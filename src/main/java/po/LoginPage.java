@@ -10,6 +10,13 @@ public class LoginPage extends BaseMethod  {
     private final By passwordField = By.xpath("//input[@name='wpPassword']");
     private final By enterButton = By.xpath("//button[@name='wploginattempt']");
     private final By actualNickname = By.xpath("//a[@title='Ваша домашняя страница [alt-shift-.]']/span");
+    private final By login = By.xpath("//li[@id='pt-login']");
+
+
+    public LoginPage clickLogin() {
+        click(login, 10);
+        return this;
+    }
 
     public void clickLoginButton() {
         click(loginButton, 10);

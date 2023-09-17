@@ -1,10 +1,11 @@
+import builder.LoginPageBuilder;
 import org.openqa.selenium.Dimension;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import po.LoginPage;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotEquals;
+
 
 public class LoginTest extends BaseTest{
 
@@ -24,6 +25,19 @@ public class LoginTest extends BaseTest{
         loginPage.clickEnterButton();
 
         assertEquals("Beseda.test", loginPage.getActualNickname(), "The result is not the same");
+
+    }
+
+    @Test
+    void shouldBeEnterToTheSystem() {
+        new LoginPage()
+                .clickLogin();
+        LoginPage login = new LoginPageBuilder()
+                .withUsername("Beseda.test")
+                .withPassword("hillelaqa")
+                .build();
+
+             login.clickEnterButton();
 
     }
 

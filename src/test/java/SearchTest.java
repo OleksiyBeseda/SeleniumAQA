@@ -1,3 +1,4 @@
+import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.Dimension;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -5,7 +6,6 @@ import po.ArticlePage;
 import po.SearchPage;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotEquals;
 
 public class SearchTest extends BaseTest{
 
@@ -25,8 +25,16 @@ public class SearchTest extends BaseTest{
         search.fillText("Odesa");
         search.enterSearch();
 
-        assertEquals("Результаты поиска",search.getTitle(), "The result in not the same");
-        assertNotEquals("Результаты не поиска",search.getTitle(), "The result in not the same");
+        SoftAssertions softly = new SoftAssertions();
+
+        softly.assertThat(search.getTitle())
+                .as("The result is appeared")
+                .isEqualTo("Результаты поиска");
+
+
+        softly.assertAll();
+//        assertEquals("Результаты поиска",search.getTitle(), "The result in not the same");
+//        assertNotEquals("Результаты не поиска",search.getTitle(), "The result in not the same");
 
     }
 
