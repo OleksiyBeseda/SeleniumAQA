@@ -23,10 +23,10 @@ public class WebDriverInit {
     }
 
     public static void closeDriver() {
-        if (driver != null) {
+
             driver.quit();
             driver = null; // Опционально: обнуляем driver после завершения сеанса
-        }
+
     }
 
 

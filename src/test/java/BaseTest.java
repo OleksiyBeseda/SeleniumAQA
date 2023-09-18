@@ -9,12 +9,12 @@ public class BaseTest {
 
     WebDriver driver = null;
 
-    @BeforeSuite
+    @BeforeSuite(groups = {"All", "Smoke", "Regression"})
     public void setUP() {
         driver = getDriver();
     }
 
-    @AfterSuite
+    @AfterSuite(groups = {"All", "Smoke", "Regression"})
     public void tearDown() {
     closeDriver();
     }

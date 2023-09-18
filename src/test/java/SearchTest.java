@@ -1,11 +1,13 @@
+import listeners.RetryAnalyzer;
+import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.Dimension;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import po.ArticlePage;
 import po.SearchPage;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotEquals;
 
 public class SearchTest extends BaseTest{
 
@@ -18,15 +20,23 @@ public class SearchTest extends BaseTest{
         driver.manage().window().setSize(new Dimension(1920, 1080));
     }
 
-    @Test
-    void shouldBeVisibleResultSearch() {
+    @Test(groups = {"Regression"}, dataProvider = "data-test", retryAnalyzer = RetryAnalyzer.class)
+    void shouldBeVisibleResultSearch(String result) {
 
         search.clickOnTabHistory();
-        search.fillText("Odesa");
+        search.fillText(result);
         search.enterSearch();
 
-        assertEquals("Результаты поиска",search.getTitle(), "The result in not the same");
-        assertNotEquals("Результаты не поиска",search.getTitle(), "The result in not the same");
+        SoftAssertions softly = new SoftAssertions();
+
+        softly.assertThat(search.getTitle())
+                .as("The result is appeared")
+                .isEqualTo("Результаты поиска");
+
+
+        softly.assertAll();
+//        assertEquals("Результаты поиска",search.getTitle(), "The result in not the same");
+//        assertNotEquals("Результаты не поиска",search.getTitle(), "The result in not the same");
 
     }
 
@@ -38,7 +48,18 @@ public class SearchTest extends BaseTest{
 
 
         assertEquals("Ubisoft Poland", article.getTitleArticle());
-
     }
+
+
+    @DataProvider(name = "data-test")
+    public Object[][] getResults() {
+        return new Object[][] {
+                {"Odesa"},
+                {"Ubisoft"},
+                {"Результаты поиска2"}
+        };
+    }
+
+
 
 }
