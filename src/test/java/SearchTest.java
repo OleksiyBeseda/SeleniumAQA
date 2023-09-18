@@ -1,6 +1,8 @@
+import listeners.RetryAnalyzer;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.Dimension;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import po.ArticlePage;
 import po.SearchPage;
@@ -18,11 +20,11 @@ public class SearchTest extends BaseTest{
         driver.manage().window().setSize(new Dimension(1920, 1080));
     }
 
-    @Test
-    void shouldBeVisibleResultSearch() {
+    @Test(groups = {"Regression"}, dataProvider = "data-test", retryAnalyzer = RetryAnalyzer.class)
+    void shouldBeVisibleResultSearch(String result) {
 
         search.clickOnTabHistory();
-        search.fillText("Odesa");
+        search.fillText(result);
         search.enterSearch();
 
         SoftAssertions softly = new SoftAssertions();
@@ -46,7 +48,18 @@ public class SearchTest extends BaseTest{
 
 
         assertEquals("Ubisoft Poland", article.getTitleArticle());
-
     }
+
+
+    @DataProvider(name = "data-test")
+    public Object[][] getResults() {
+        return new Object[][] {
+                {"Odesa"},
+                {"Ubisoft"},
+                {"Результаты поиска2"}
+        };
+    }
+
+
 
 }

@@ -13,9 +13,9 @@ public class BaseMethod {
         return new WebDriverWait(getDriver(), 15);
     }
 
-    protected void Click(By locator) {
-        getWait().until(d ->d.findElement(locator)).click();
-    }
+//    protected void Click(By locator) {
+//        getWait().until(d ->d.findElement(locator)).click();
+//    }
     protected void send(By locator, String text) {
         getWait().until(ExpectedConditions.presenceOfElementLocated(locator)).sendKeys(text);
     }
@@ -34,16 +34,16 @@ public class BaseMethod {
     protected void click(By locator, int time) {
         getWait(time).until(d ->d.findElement(locator)).click();
     }
-    protected void send(By locator, String text, int time) {
-        getWait(time).until(ExpectedConditions.presenceOfElementLocated(locator)).sendKeys(text);
-    }
+//    protected void send(By locator, String text, int time) {
+//        getWait(time).until(ExpectedConditions.presenceOfElementLocated(locator)).sendKeys(text);
+//    }
 
-    protected void clickEnter(By locator, int time) {
-        getWait(time).until(d ->d.findElement(locator)).sendKeys(Keys.ENTER);
-    }
-    protected String getTextFromElement(By locator, int time) {
-        return getWait(time).until(d ->d.findElement(locator)).getText();
-    }
+//    protected void clickEnter(By locator, int time) {
+//        getWait(time).until(d ->d.findElement(locator)).sendKeys(Keys.ENTER);
+//    }
+//    protected String getTextFromElement(By locator, int time) {
+//        return getWait(time).until(d ->d.findElement(locator)).getText();
+//    }
 
 
 
