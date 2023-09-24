@@ -22,6 +22,8 @@ public class SearchTest extends BaseTest{
 
     @Test(groups = {"Regression"}, dataProvider = "data-test", retryAnalyzer = RetryAnalyzer.class)
     void shouldBeVisibleResultSearch(String result) {
+        driver.get("https://ru.wikipedia.org/");
+        driver.manage().window().setSize(new Dimension(1920, 1080));
 
         search.clickOnTabHistory();
         search.fillText(result);
