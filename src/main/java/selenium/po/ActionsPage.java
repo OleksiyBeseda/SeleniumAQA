@@ -1,12 +1,10 @@
-package po;
+package selenium.po;
 
-import base.BaseMethod;
-import base.Table;
+import selenium.base.BaseMethod;
+import selenium.base.Table;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import static po.util.JSActions.jsClick;
+import selenium.po.util.JSActions;
 
 public class ActionsPage extends BaseMethod {
 
@@ -48,7 +46,7 @@ public class ActionsPage extends BaseMethod {
 
     public ActionsPage promptAlert() {
         WebElement element = getWait().until(d -> d.findElement(prompt));
-        jsClick(element);
+        JSActions.jsClick(element);
         return this;
     }
     public ActionsPage callConfirmAlert() {

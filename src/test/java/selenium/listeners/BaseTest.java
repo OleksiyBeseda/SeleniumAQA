@@ -1,9 +1,11 @@
+package selenium.listeners;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
-import static config.WebDriverInit.closeDriver;
-import static config.WebDriverInit.getDriver;
+import static selenium.config.WebDriverInit.closeDriver;
+import static selenium.config.WebDriverInit.getDriver;
 
 public class BaseTest {
 

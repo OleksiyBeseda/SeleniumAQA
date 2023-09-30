@@ -1,9 +1,9 @@
-package po.util;
+package selenium.po.util;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
-import static config.WebDriverInit.getDriver;
+import static selenium.config.WebDriverInit.getDriver;
 
 public class JSActions {
     public static void  jsClick(WebElement element) {

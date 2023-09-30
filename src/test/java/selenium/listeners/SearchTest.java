@@ -1,11 +1,12 @@
-import listeners.RetryAnalyzer;
+package selenium.listeners;
+
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.Dimension;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import po.ArticlePage;
-import po.SearchPage;
+import selenium.po.ArticlePage;
+import selenium.po.SearchPage;
 
 import static org.testng.Assert.assertEquals;
 
