@@ -1,9 +1,11 @@
-import builder.LoginPageBuilder;
+package ui.selenium;
+
+import ui.selenium.builder.LoginPageBuilder;
 import org.openqa.selenium.Dimension;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import po.LoginPage;
+import ui.selenium.po.LoginPage;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;

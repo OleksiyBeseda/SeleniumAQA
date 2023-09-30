@@ -1,11 +1,12 @@
-import listeners.RetryAnalyzer;
+package ui.selenium;
+
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.Dimension;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import po.ArticlePage;
-import po.SearchPage;
+import ui.selenium.po.ArticlePage;
+import ui.selenium.po.SearchPage;
 
 import static org.testng.Assert.assertEquals;
 
@@ -22,6 +23,8 @@ public class SearchTest extends BaseTest{
 
     @Test(groups = {"Regression"}, dataProvider = "data-test", retryAnalyzer = RetryAnalyzer.class)
     void shouldBeVisibleResultSearch(String result) {
+        driver.get("https://ru.wikipedia.org/");
+        driver.manage().window().setSize(new Dimension(1920, 1080));
 
         search.clickOnTabHistory();
         search.fillText(result);

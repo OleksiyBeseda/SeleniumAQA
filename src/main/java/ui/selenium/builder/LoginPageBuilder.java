@@ -1,6 +1,6 @@
-package builder;
+package ui.selenium.builder;
 
-import po.LoginPage;
+import ui.selenium.po.LoginPage;
 
 public class LoginPageBuilder {
 
