@@ -1,13 +1,22 @@
 package api.config;
+import io.restassured.module.jsv.JsonSchemaValidator;
+import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 
 public class Request {
 
+    public Response post(RequestSpecification request, String body, String endpoint) {
+        return given()
+                .spec(request)
+                .body(body)
+                .post(endpoint);
+    }
 
     public ValidatableResponse post(RequestSpecification request, String body, String endpoint, ResponseSpecification response) {
         return given()
@@ -15,31 +24,52 @@ public class Request {
                 .body(body)
                 .post(endpoint)
                 .then()
-                .statusCode(200);
+                .spec(response);
     }
-    public ValidatableResponse getUserByUsername(String username) {
-        return RestAssured.given()
-                .when()
-                .get("/user/{username}", username)
+
+    public ValidatableResponse post(RequestSpecification request, String body, String endpoint, ResponseSpecification response,
+                                    String path) {
+        return given()
+                .spec(request)
+                .body(body)
+                .post(endpoint)
                 .then()
-                .statusCode(200);
+                .spec(response)
+                .body(matchesJsonSchemaInClasspath(path));
     }
 
+    public ValidatableResponse get(RequestSpecification request, String endpoint, String username, ResponseSpecification response) {
+        return given()
+                .spec(request)
+                .get(endpoint + username)
+                .then()
+                .spec(response);
+    }
 
-//    public Response get(RequestSpecification request) {
-//        return given()
-//                .spec(request)
-//                .get();
-//    }
-//    public Response put(RequestSpecification request, String body) {
-//        return given()
-//                .spec(request)
-//                .body(body)
-//                .put();
-//    }
-//    public Response delete(RequestSpecification request) {
-//        return given()
-//                .spec(request)
-//                .delete();
-//    }
+    public ValidatableResponse get(RequestSpecification request, String endpoint, String username, ResponseSpecification response,
+                                   String path) {
+        return given()
+                .spec(request)
+                .get(endpoint + username)
+                .then()
+                .spec(response)
+                .body(matchesJsonSchemaInClasspath(path));
+    }
+
+    public ValidatableResponse put(RequestSpecification request, String body, String endpoint, String param,
+                        ResponseSpecification response) {
+        return given()
+                .spec(request)
+                .body(body)
+                .put(endpoint + param)
+                .then()
+                .spec(response);
+    }
+
+    public Response delete(RequestSpecification request, String endpoint, String param,
+                                      ResponseSpecification response) {
+        return given()
+                .spec(request)
+                .delete(param);
+    }
 }
