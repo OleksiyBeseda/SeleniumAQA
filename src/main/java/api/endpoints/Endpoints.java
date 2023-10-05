@@ -2,7 +2,12 @@ package api.endpoints;
 
 public enum Endpoints {
 
-    CREATE_USER("/user");
+    CREATE_USER("/user"),
+    USER_WITH_PARAM("/user/"),
+    DELETE_USER("/user/{username}");
+
+
+
 
     private final String endpoint;
 

@@ -4,6 +4,7 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import static api.utils.Utils.getPropertyFromFile;
 
+
 public class BaseRequestSpecification {
 
     private final String APPLICATION_JSON = "application/json";
@@ -18,21 +19,20 @@ public class BaseRequestSpecification {
                 .setBaseUri(url)
                 .setBasePath("v2")
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
+                .build();
+    }
+//    public RequestSpecification requestAuth() {
+//        return new RequestSpecBuilder()
+//                .addHeader(CONTENT_TYPE, APPLICATION_JSON)
+//                .addHeader("Authorization", "Bearer " + getToken())
 //                .addHeader(ACCEPT, APPLICATION_JSON)
 //                .addHeader(X_REQUEST, XMLHttpRequest)
-                .build();
-    }
-    public RequestSpecification requestAuth() {
-        return new RequestSpecBuilder()
-                .setBaseUri(url)
-                .setBasePath("v2/")
-                .addHeader(CONTENT_TYPE, APPLICATION_JSON)
-                .addHeader("Authorization", "Bearer " + getToken())
-                .build();
-    }
-    private String getToken() {
-        return "your-auth-token";
-    }
+//                .build();
+//    }
+
+//    private String getToken() {
+//        return "your-auth-token";
+//    }
 
 
 }

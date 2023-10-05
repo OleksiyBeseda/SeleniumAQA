@@ -18,6 +18,7 @@
         <testng.version>6.14.3</testng.version>
         <assertj.version>3.11.1</assertj.version>
         <rest-assured.version>5.3.2</rest-assured.version>
+        <json-schema-validator.version>4.3.0</json-schema-validator.version>
         <lombok.version>1.18.28</lombok.version>
     </properties>
 
@@ -27,6 +28,12 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>${json-schema-validator.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
@@ -66,6 +73,12 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>5.3.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>4.3.0</version>
             <scope>compile</scope>
         </dependency>
 
