@@ -4,7 +4,10 @@ public enum Endpoints {
 
     CREATE_USER("/user"),
     USER_WITH_PARAM("/user/"),
-    DELETE_USER("/user/{username}");
+    DELETE_USER("/user/{username}"),
+    GET_TOKEN("/GenerateToken"),
+    ADD_BOOK("/Books"),
+    USER("/User/");
 
 
 
