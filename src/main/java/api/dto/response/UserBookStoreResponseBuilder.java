@@ -15,5 +15,5 @@ import java.util.ArrayList;
 public class UserBookStoreResponseBuilder {
     public String userId;
     public String username;
-    public ArrayList<Book> books;
+    public ArrayList<AddBookRequestBuilder> books;
 }

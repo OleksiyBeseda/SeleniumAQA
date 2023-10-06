@@ -1,12 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Simple">
+<suite name="Suite" parallel="methods" thread-count="3">
 
-    <listeners>
-            <listener class-name="selenium.listeners.RetryAnalyzer"></listener>
-    </listeners>
-    
-    <test name="Search/Login">
+    <test name="GetUserWithBook">
 
         <groups>
             <define name="All"/>
@@ -19,6 +15,7 @@
             </run>
         </groups>
         <classes>
+            <class name="api.test.UserBookTest"/>
             <class name="selenium.listeners.SearchTest"/>
             <class name="selenium.listeners.LoginTest"/>
             <class name="selenide.SearchTest"/>

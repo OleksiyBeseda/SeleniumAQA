@@ -13,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Book{
+public class AddBookRequestBuilder {
     public String isbn;
     public String title;
     public String subTitle;

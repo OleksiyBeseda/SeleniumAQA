@@ -11,11 +11,13 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 
 public class Request {
 
-    public Response post(RequestSpecification request, String body, String endpoint) {
+    public ValidatableResponse post(RequestSpecification request, String body, String endpoint) {
         return given()
                 .spec(request)
                 .body(body)
-                .post(endpoint);
+                .post(endpoint)
+                .then()
+                .log().all();
     }
 
     public ValidatableResponse post(RequestSpecification request, String body, String endpoint, ResponseSpecification response) {
@@ -38,10 +40,10 @@ public class Request {
                 .body(matchesJsonSchemaInClasspath(path));
     }
 
-    public ValidatableResponse get(RequestSpecification request, String endpoint, String username, ResponseSpecification response) {
+    public ValidatableResponse get(RequestSpecification request, String endpoint, String params, ResponseSpecification response) {
         return given()
                 .spec(request)
-                .get(endpoint + username)
+                .get(endpoint + params)
                 .then()
                 .spec(response);
     }
